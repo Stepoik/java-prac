@@ -37,6 +37,5 @@ public class Main {
         if (value.isPresent()) {
             System.out.println(value.getAsDouble());
         }
-
     }
 }

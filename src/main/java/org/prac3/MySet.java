@@ -12,12 +12,26 @@ public class MySet implements Set<Integer> {
 
     @Override
     public int size() {
-        return values.length;
+        try {
+            semaphore.acquire();
+            return lastIndex;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            semaphore.release();
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        return lastIndex == 0;
+        try {
+            semaphore.acquire();
+            return lastIndex == 0;
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            semaphore.release();
+        }
     }
 
     @Override
