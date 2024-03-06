@@ -173,14 +173,20 @@ public class MySet implements Set<Integer> {
             throw new RuntimeException(e);
         } finally {
             semaphore.release();
-
         }
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        for (Object o: c) {
-            remove(o);
+        try {
+            semaphore.acquire();
+            for (Object o: c) {
+                remove(o);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            semaphore.release();
         }
         return true;
     }
