@@ -33,17 +33,19 @@ tasks.register("copyDockerJar",Copy) {
     into "docker"
 }
 
-tasks.register("runDocker", Exec) {
+tasks.register("runDocker") {
     dependsOn "copyDockerJar"
-    exec {
-        commandLine "docker", "build", "-t", "haha", "./docker"
-    }
-    exec {
-        commandLine "docker", "run", "--rm", "haha"
+    doLast {
+        exec {
+            commandLine "docker", "build", "-t", "haha", "./docker"
+        }
+        exec {
+            commandLine "docker", "run", "--rm", "haha"
+        }
     }
 }
 
 runDocker {
-    `
+
 }
 
