@@ -9,4 +9,12 @@ public class GoshaDog {
         this.mmr = mmr;
         this.pts = pts;
     }
+
+    @Override
+    public String toString() {
+        return "GoshaDog{" +
+                "mmr=" + mmr +
+                ", pts=" + pts +
+                '}';
+    }
 }
