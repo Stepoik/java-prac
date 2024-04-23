@@ -1,3 +1,6 @@
 rootProject.name = 'java-prac'
 include 'prac9'
+include 'prac19'
+include 'prac20'
+include 'prac22'
 
